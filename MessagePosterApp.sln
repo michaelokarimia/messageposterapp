@@ -5,6 +5,13 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePosterApp", "MessagePosterApp\MessagePosterApp.csproj", "{96FB6562-94B6-4AD2-A66F-EAA6675F44A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29A39B50-AD43-4D18-9AFC-85D4F7903D59}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{1058DBCE-C270-405F-9DFE-468D885A58F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,10 @@ Global
 		{96FB6562-94B6-4AD2-A66F-EAA6675F44A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96FB6562-94B6-4AD2-A66F-EAA6675F44A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96FB6562-94B6-4AD2-A66F-EAA6675F44A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1058DBCE-C270-405F-9DFE-468D885A58F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1058DBCE-C270-405F-9DFE-468D885A58F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1058DBCE-C270-405F-9DFE-468D885A58F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1058DBCE-C270-405F-9DFE-468D885A58F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
