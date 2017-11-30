@@ -1,7 +1,9 @@
-﻿namespace MessagePosterApp
+﻿using System;
+
+namespace MessagePosterApp
 {
     public interface IUserMessageRepository
     {
-        void Save(string username);
+        void Save(UserMessage userMessage);
     }
 }

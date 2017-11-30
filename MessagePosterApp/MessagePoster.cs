@@ -4,12 +4,12 @@ namespace MessagePosterApp
 {
     public class MessagePoster
     {
-        internal IUserMessageRepository Repository;
+        internal IUserMessageRepository repository;
 
 
         public MessagePoster(IUserMessageRepository repository)
         {
-            this.Repository = repository;
+            this.repository = repository;
         }
 
 
@@ -18,6 +18,14 @@ namespace MessagePosterApp
             var foundMessages = "User name not found";
 
             return foundMessages;
+        }
+
+        public void SaveMessage(string inputstring)
+        {
+            var inputstringPair = inputstring.Split(':');
+
+            var userMessage = new UserMessage(inputstringPair[0], inputstringPair[1]);
+            repository.Save(userMessage);
         }
     }
 }

@@ -31,14 +31,23 @@ namespace Tests
         [Test]
         public void RepositoryCallWhenSaveUserMessageInvoked()
         {
+            var message = "Message";
+            var username = "Jane Doe";
+            var inputstring = string.Format("{0}:{1}", username, message);
             
 
-            var username = "Jane Doe";
-            mockRespository.Verify(x => x.Save(username), Times.Once);
+            var userMessage = new UserMessage(username, message);
+
             subject = new MessagePoster(mockRespository.Object);
 
 
-            
+
+            subject.SaveMessage(inputstring);
+
+            mockRespository.Verify(x => x.Save(It.IsAny<UserMessage>()), Times.Once);
+
+
+
         }
     }
 }
