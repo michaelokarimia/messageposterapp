@@ -4,9 +4,14 @@ namespace MessagePosterApp
 {
     public class MessagePoster
     {
-        public MessagePoster()
+        internal IUserMessageRepository Repository;
+
+
+        public MessagePoster(IUserMessageRepository repository)
         {
+            this.Repository = repository;
         }
+
 
         public string GetUserMessages(string name)
         {
