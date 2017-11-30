@@ -10,7 +10,9 @@ namespace MessagePosterApp
 
         public string GetUserMessages(string name)
         {
-            return "";
+            var foundMessages = "User name not found";
+
+            return foundMessages;
         }
     }
 }
