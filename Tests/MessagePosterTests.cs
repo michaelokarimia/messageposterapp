@@ -19,21 +19,21 @@ namespace Tests
         public void Setup()
         {
             mockRespository = new Mock<IUserMessageRepository>();
-            mockRespository.Setup(x => x.GetMessages(It.IsAny<string>())).Returns(new List<string>());
+            mockRespository.Setup(x => x.GetMessages(It.IsAny<string>())).Returns(new List<Message>());
 
             subject = new MessagePoster(mockRespository.Object);
         }
 
         [Test]
-        public void PrintsUserNotFoundForUnknownUsernameEntered()
+        public void ReturnsNoMessagesWhenForUnknownUsernameEntered()
         {
-            mockRespository.Setup(x => x.GetMessages(It.IsAny<string>())).Returns(new List<string>());
+            mockRespository.Setup(x => x.GetMessages(It.IsAny<string>())).Returns(new List<Message>());
 
             subject = new MessagePoster(mockRespository.Object);
 
             var messages = subject.GetUserMessages("joe bloggs");
 
-            Assert.AreEqual("User name not found", messages[0]);
+            Assert.AreEqual(0, messages.Count);
         }
 
 

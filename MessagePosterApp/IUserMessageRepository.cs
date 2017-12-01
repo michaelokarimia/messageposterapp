@@ -5,26 +5,29 @@ namespace MessagePosterApp
     public interface IUserMessageRepository
     {
         void Save(UserMessage userMessage);
-        List<string> GetMessages(string userName);
+        List<Message> GetMessages(string userName);
     }
 
 
     public class InMemoryUserMessageRepository : IUserMessageRepository
     {
-        private readonly Dictionary<string, List<string>> dict;
+        private readonly Dictionary<string, List<Message>> dict;
 
         public InMemoryUserMessageRepository()
         {
-            dict = new Dictionary<string, List<string>>();
+            dict = new Dictionary<string, List<Message>>();
         }
 
-        public List<string> GetMessages(string userName)
+
+
+        public List<Message> GetMessages(string userName)
         {
-            var result = new List<string>();
+            var result = new List<Message>();
 
             if (dict.ContainsKey(userName))
             {
-                result.AddRange(dict[userName]);            }
+                result.AddRange(dict[userName]);
+            }
 
             return result;
         }
@@ -33,11 +36,13 @@ namespace MessagePosterApp
         {
             if (dict.ContainsKey(userMessage.UserName))
             {
-                dict[userMessage.UserName].Add(userMessage.Message);
+                var currentMessages = dict[userMessage.UserName];
+
+                currentMessages.Add(new Message(userMessage.Message, System.DateTime.UtcNow));
             }
             else
             {
-                dict.Add(userMessage.UserName, new List<string> { userMessage.Message });
+                dict.Add(userMessage.UserName, new List<Message> { new Message(userMessage.Message, System.DateTime.UtcNow) });
             }
         }
     }

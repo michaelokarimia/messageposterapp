@@ -32,7 +32,7 @@ namespace Tests
             var messages = subject.GetMessages(userName);
 
 
-            Assert.AreEqual(message, messages[0]);
+            Assert.AreEqual(message, messages[0].Text);
         }
 
         [Test]
@@ -47,8 +47,8 @@ namespace Tests
 
             var messages = subject.GetMessages(userName);
 
-            Assert.AreEqual(message1, messages[0]);
-            Assert.AreEqual(message2, messages[1]);
+            Assert.AreEqual(message1, messages[0].Text);
+            Assert.AreEqual(message2, messages[1].Text);
         }
 
 
@@ -73,9 +73,31 @@ namespace Tests
 
             var messages = subject.GetMessages(userNameTwo);
 
-            Assert.AreEqual(msg1, messages[0]);
-            Assert.AreEqual(msg2, messages[1]);
-            Assert.AreEqual(msg3, messages[2]);
+            Assert.AreEqual(msg1, messages[0].Text);
+            Assert.AreEqual(msg2, messages[1].Text);
+            Assert.AreEqual(msg3, messages[2].Text);
         }
+
+        [Test]
+        public void AgeOfMessageStored()
+        {
+            DateTime timestamp = DateTime.UtcNow;
+
+            var userName = "David";
+            var message1 = "Let's dance";
+            var message2 = "Put on your red shoes and sing the blues";
+
+
+            subject.Save(new UserMessage(userName, message1, timestamp));
+            subject.Save(new UserMessage(userName, message2, timestamp));
+
+            var messages = subject.GetMessages(userName);
+
+
+
+            Assert.AreEqual(message1, messages[0].Text);
+            Assert.AreEqual(timestamp, messages[0].TimeStamp);
+        }
+        
     }
 }
