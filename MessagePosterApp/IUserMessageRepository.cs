@@ -35,7 +35,7 @@ namespace MessagePosterApp
         {
             if (dict.ContainsKey(userMessage.UserName))
             {
-                dict[userMessage.UserName] = userMessage.Message;
+                dict[userMessage.UserName] += ", " + userMessage.Message;
             }
             else
             {

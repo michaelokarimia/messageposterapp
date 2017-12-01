@@ -33,5 +33,19 @@ namespace Tests
             Assert.AreEqual(message, subject.GetMessages(userName));
         }
 
+        [Test]
+        public void SavesAndThenRetrieveMultipleMessagesOfANewUser()
+        {
+            var userName = "David";
+            var message1 = "Ground control to Major Tom";
+            var message2 = "Take your protein pills and put your helmet on";
+
+            subject.Save(new UserMessage(userName, message1));
+            subject.Save(new UserMessage(userName, message2));
+
+
+            Assert.AreEqual(message1 + ", " + message2, subject.GetMessages(userName));
+        }
+
     }
 }
