@@ -29,8 +29,10 @@ namespace Tests
 
             subject.Save(new UserMessage(userName, message));
 
+            var messages = subject.GetMessages(userName);
 
-            Assert.AreEqual(message, subject.GetMessages(userName));
+
+            Assert.AreEqual(message, messages[0]);
         }
 
         [Test]
@@ -43,8 +45,10 @@ namespace Tests
             subject.Save(new UserMessage(userName, message1));
             subject.Save(new UserMessage(userName, message2));
 
+            var messages = subject.GetMessages(userName);
 
-            Assert.AreEqual(message1 + ", " + message2, subject.GetMessages(userName));
+            Assert.AreEqual(message1, messages[0]);
+            Assert.AreEqual(message2, messages[1]);
         }
 
     }

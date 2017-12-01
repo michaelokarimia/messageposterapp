@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MessagePosterApp
 {
@@ -13,14 +14,14 @@ namespace MessagePosterApp
         }
 
 
-        public string GetUserMessages(string name)
+        public List<string> GetUserMessages(string name)
         {
-            var foundMessages = repository.GetMessages(name);
+            var results = repository.GetMessages(name);
 
-            if (string.IsNullOrEmpty(foundMessages))
-                foundMessages = "User name not found";
+            if (results.Count == 0)
+                results = new List<string>() { "User name not found" };
 
-            return foundMessages;
+            return results;
         }
 
         public void SaveMessage(string inputstring)
