@@ -15,8 +15,6 @@ namespace MessagePosterApp
 
         public string GetUserMessages(string name)
         {
-           
-
             var foundMessages = repository.GetMessages(name);
 
             if (string.IsNullOrEmpty(foundMessages))

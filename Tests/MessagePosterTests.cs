@@ -32,8 +32,6 @@ namespace Tests
         [Test]
         public void RepositoryCalledWhenGetUserMessageInvoked()
         {
-            //mockRespository.Setup(x=> x.GetMessages(It.IsAny<string>())).Returns("")
-
             string userName = "Eric Idle";
 
             subject.GetUserMessages(userName);
@@ -61,5 +59,8 @@ namespace Tests
 
 
         }
+
+
+     
     }
 }
