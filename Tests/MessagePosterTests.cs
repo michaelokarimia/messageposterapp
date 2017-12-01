@@ -28,8 +28,21 @@ namespace Tests
             Assert.AreEqual("User name not found", subject.GetUserMessages("joe bloggs"));
         }
 
+
         [Test]
-        public void RepositoryCallWhenSaveUserMessageInvoked()
+        public void RepositoryCalledWhenGetUserMessageInvoked()
+        {
+            //mockRespository.Setup(x=> x.GetMessages(It.IsAny<string>())).Returns("")
+
+            string userName = "Eric Idle";
+
+            subject.GetUserMessages(userName);
+
+            mockRespository.Verify(x => x.GetMessages(userName), Times.Once);
+        }
+
+        [Test]
+        public void RepositoryCalledWhenSaveMessageInvoked()
         {
             var message = "Message";
             var username = "Jane Doe";
@@ -45,7 +58,6 @@ namespace Tests
             subject.SaveMessage(inputstring);
 
             mockRespository.Verify(x => x.Save(It.IsAny<UserMessage>()), Times.Once);
-
 
 
         }

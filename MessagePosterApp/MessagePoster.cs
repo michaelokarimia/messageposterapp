@@ -15,7 +15,12 @@ namespace MessagePosterApp
 
         public string GetUserMessages(string name)
         {
-            var foundMessages = "User name not found";
+           
+
+            var foundMessages = repository.GetMessages(name);
+
+            if (string.IsNullOrEmpty(foundMessages))
+                foundMessages = "User name not found";
 
             return foundMessages;
         }
