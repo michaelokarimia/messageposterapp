@@ -27,6 +27,9 @@ namespace Tests
             var userName = "David";
             var message = "Ground control to Major Tom";
 
+            subject.Save(new UserMessage(userName, message));
+
+
             Assert.AreEqual(message, subject.GetMessages(userName));
         }
 

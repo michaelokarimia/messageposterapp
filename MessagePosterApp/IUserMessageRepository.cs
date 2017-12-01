@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MessagePosterApp
 {
@@ -11,14 +12,35 @@ namespace MessagePosterApp
 
     public class InMemoryUserMessageRepository : IUserMessageRepository
     {
+        private readonly Dictionary<string, string> dict;
+
+        public InMemoryUserMessageRepository()
+        {
+            dict = new Dictionary<string, string>();
+        }
+
         public string GetMessages(string userName)
         {
-            throw new NotImplementedException();
+            var result = "";
+
+            if (dict.ContainsKey(userName))
+            {
+                result = dict[userName];
+            }
+
+            return result;
         }
 
         public void Save(UserMessage userMessage)
         {
-            throw new NotImplementedException();
+            if (dict.ContainsKey(userMessage.UserName))
+            {
+                dict[userMessage.UserName] = userMessage.Message;
+            }
+            else
+            {
+                dict.Add(userMessage.UserName, userMessage.Message);
+            }
         }
     }
 }
