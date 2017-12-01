@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MessagePosterApp
 {
     public class MessagePoster
     {
-        internal IUserMessageRepository repository;
-
+        private readonly IUserMessageRepository repository;
 
         public MessagePoster(IUserMessageRepository repository)
         {
             this.repository = repository;
         }
-
 
         public List<Message> GetUserMessages(string name)
         {

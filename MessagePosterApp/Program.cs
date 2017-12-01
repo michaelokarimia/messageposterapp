@@ -10,6 +10,11 @@ namespace MessagePosterApp
     {
         static void Main(string[] args)
         {
+
+            MessagePosterUI messagePoster = new MessagePosterUI();
+
+
+            messagePoster.Start();
         }
     }
 }
